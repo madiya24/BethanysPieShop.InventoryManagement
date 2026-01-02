@@ -1,4 +1,4 @@
-namespace BethanysPieShop.InventoryManagement
+namespace BethanysPieShop.InventoryManagement.ProductManagement
 {
     public enum UnitTypes
     {

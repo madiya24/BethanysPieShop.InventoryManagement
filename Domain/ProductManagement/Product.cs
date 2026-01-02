@@ -1,9 +1,10 @@
 using System.Text; // for StringBuilder
 using System.Collections.Generic; // for List<T>
 using System.Linq; // for LINQ methods
-using System.Threading.Tasks; // for async programming
+using System.Threading.Tasks;
+using BethanysPieShop.InventoryManagement.General; // for async programming
 
-namespace BethanysPieShop.InventoryManagement
+namespace BethanysPieShop.InventoryManagement.ProductManagement
 {
     public class Product
     {
@@ -52,21 +53,24 @@ namespace BethanysPieShop.InventoryManagement
 
         public bool IsBelowStockThreshold {get; private set;}//
 
+        public Price Price {get; set;} // Price property of type Price
+
          public Product(int id) : this(id, string.Empty) // constructor chaining
         {
         }
 
-        public Product(int id, string name) // constructor
+        public Product(int Id, string name) // constructor
         {
-            Id = id;
-            Name = name;
+            this.Id = Id;
+            this.Name = name;
         }
 
-        public Product(int id, string name, string? description, int maxAmountInStock, UnitTypes unitType) // constructor
+        public Product(int id, string name, string? description, Price price, UnitTypes unitType, int maxAmountInStock) // constructor
         {
             Id = id;
             Name = name;
             Description = description;
+            Price = price;
             UnitType = unitType;
 
             maxItemsInStock = maxAmountInStock;
@@ -140,16 +144,16 @@ namespace BethanysPieShop.InventoryManagement
         public string DisplayDetailsFull()
         {
 
-           // StringBuilder sb = new();
+           StringBuilder sb = new();
 
-            //sb.Append($"{Id}: {name} \n{description}\n{AmountInStock} item(s) in stock.");
+            sb.Append($"{Id}: {name} \n{description}\n{Price}\n{AmountInStock} item(s) in stock.");
 
-            //if(IsBelowStockThreshold)
-           // {
-             //   sb.Append("\n!!STOCK LOW!!");
-          //  }
-           // return sb.ToString();
-            return DisplayDetailsFull("");
+            if(IsBelowStockThreshold)
+           {
+             sb.Append("\n!!STOCK LOW!!");
+          }
+            return sb.ToString();
+            //return DisplayDetailsFull("");
         }
 
         public string DisplayDetailsFull(string extraDetails)
@@ -157,7 +161,7 @@ namespace BethanysPieShop.InventoryManagement
 
             StringBuilder sb = new StringBuilder();
 
-            sb.Append($"{Id}: {name} \n{description}\n{AmountInStock} item(s) in stock.");
+            sb.Append($"{Id}: {name} \n{description}\n{Price}\n{AmountInStock} item(s) in stock.");
             sb.Append($"\n{extraDetails}");
 
             if(IsBelowStockThreshold)
