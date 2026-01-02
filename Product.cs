@@ -1,3 +1,5 @@
+using System.Text; 
+
 namespace BethanysPieShop.InventoryManagement
 {
     public class Product
@@ -18,7 +20,8 @@ namespace BethanysPieShop.InventoryManagement
                 UpdateLowStock();
 
                 Log($"Amount in stock updated. Now {amountInStock} items in stock.");
-            }else
+            }
+            else
             {
                 Log($"Not enough items in stock for {CreateSimpleProductRepresentation()}. {amountInStock} available, {items} requested.");
             }
@@ -28,6 +31,26 @@ namespace BethanysPieShop.InventoryManagement
         public void IncreaseStock()
         {
             amountInStock++;
+        }
+
+        public string DisplayDetailsShort()
+        {
+            return $"{id}. {name} \n{amountInStock} items in stock.";
+        }
+
+        public string DisplayDetailsFull()
+        {
+
+            StringBuilder sb = new();
+
+            sb.Append($"{id}: {name} \n{description}\n{amountInStock} item(s) in stock.");
+
+            if(isBelowStockThreshold)
+            {
+                sb.Append("\n!!STOCK LOW!!");
+            }
+            return sb.ToString();
+            
         }
 
         public void UpdateLowStock()
