@@ -1,4 +1,7 @@
-using System.Text; 
+using System.Text; // for StringBuilder
+using System.Collections.Generic; // for List<T>
+using System.Linq; // for LINQ methods
+using System.Threading.Tasks; // for async programming
 
 namespace BethanysPieShop.InventoryManagement
 {
@@ -8,34 +11,91 @@ namespace BethanysPieShop.InventoryManagement
         private string name = string.Empty;
         private string? description;
         private int maxItemsInStock = 0;
-        private UnitTypes unitType ;
-        private int amountInStock = 0;
-        private bool isBelowStockThreshold = false;
+        
+
+        public int Id 
+        {
+            get { return id; }
+            set
+            { 
+                id = value; 
+            }
+        }
+        public string Name 
+        { 
+            get { return name; } 
+            set 
+            { 
+                name = value.Length > 50 ? value[..50] : value; // [..50] means take from start to 50
+            } 
+        }
+
+        public string? Description 
+        { 
+            get { return description; } 
+            set 
+            { 
+               if(value == null)
+               {
+                    description = string.Empty;
+               }
+               else
+               {
+                    description = value.Length > 250 ? value[..250] : value; 
+               }
+            } 
+        }
+
+        public UnitTypes UnitType {get; set;}
+
+        public int AmountInStock{get;private set;} // private set means it can only be changed within this class
+
+        public bool IsBelowStockThreshold {get; private set;}//
+
+        public Product(int id, string name) // constructor
+        {
+            Id = id;
+            Name = name;
+        }
 
         public void UseProduct(int items)
         {
-            if(items <= amountInStock)
+            if(items <= AmountInStock)
             {
-                amountInStock -= items;
+                AmountInStock -= items;
                 UpdateLowStock();
 
-                Log($"Amount in stock updated. Now {amountInStock} items in stock.");
+                Log($"Amount in stock updated. Now {AmountInStock} items in stock.");
             }
             else
             {
-                Log($"Not enough items in stock for {CreateSimpleProductRepresentation()}. {amountInStock} available, {items} requested.");
+                Log($"Not enough items in stock for {CreateSimpleProductRepresentation()}. {AmountInStock} available, {items} requested.");
             }
 
         }
 
         public void IncreaseStock()
         {
-            amountInStock++;
+            AmountInStock++;
+        }
+
+        public void DecreaseStock(int items, string reason)
+        {
+            if(maxItemsInStock <= AmountInStock)
+            {
+                //decrease stock with the specified number of items
+                AmountInStock -= items;
+            }
+            else
+            {
+                AmountInStock = 0;
+            }
+            UpdateLowStock();
         }
 
         public string DisplayDetailsShort()
         {
-            return $"{id}. {name} \n{amountInStock} items in stock.";
+            return $"{id}. {name} \n{AmountInStock} items in stock.";
         }
 
         public string DisplayDetailsFull()
@@ -43,9 +103,9 @@ namespace BethanysPieShop.InventoryManagement
 
             StringBuilder sb = new();
 
-            sb.Append($"{id}: {name} \n{description}\n{amountInStock} item(s) in stock.");
+            sb.Append($"{id}: {name} \n{description}\n{AmountInStock} item(s) in stock.");
 
-            if(isBelowStockThreshold)
+            if(IsBelowStockThreshold)
             {
                 sb.Append("\n!!STOCK LOW!!");
             }
@@ -55,9 +115,9 @@ namespace BethanysPieShop.InventoryManagement
 
         public void UpdateLowStock()
         {
-            if(amountInStock < 10) // for max value
+            if(AmountInStock < 10) // for max value
             {
-                isBelowStockThreshold = true;
+                IsBelowStockThreshold = true;
                 
             }
             
