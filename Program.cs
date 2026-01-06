@@ -16,7 +16,10 @@ Product p3 = new Product(3) {Name = "Strawberry", Description = "Lemon ipsum", P
 
 PrintWelcome();
 
-
+Utilities.InitializeStock();
+Utilities.ShowMainMenu();
+Console.WriteLine("Application shutting down...");
+Console.ReadLine();
 
 static void PrintWelcome()
 {

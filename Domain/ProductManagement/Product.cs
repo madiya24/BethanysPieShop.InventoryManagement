@@ -114,7 +114,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                 Log($"Created {CreateSimpleProductRepresentation()}. Stock overflow {newStock - AmountInStock} item(s) ordered that could'nt be stored..");
             }
 
-            if(AmountInStock > 10)
+            if(AmountInStock > StockThreshold)
             {
                 IsBelowStockThreshold = false;
             }
