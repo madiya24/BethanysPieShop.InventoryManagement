@@ -11,18 +11,16 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
 
         internal static void InitializeStock() // Mock implementation
         {
-            Product p1 = new Product(1) {Name = "Sugar", Description = "Lemon ipsum", Price = new Price() {ItemPrice = 10, Currency = Currency.Euro}, UnitType = UnitTypes.PerKg}; // create Product object
-            p1.IncreaseStock(10); // increase stock by 10
+            ProductRepository productRepository = new();
+            inventory = productRepository.LoadProductsFromFile();
 
-            var p2 = new Product(2) {Name = "Cake", Description = "Lemon ipsum", Price = new Price() {ItemPrice = 8, Currency = Currency.Euro}, UnitType = UnitTypes.PerItem}; // create another Product object
-            p2.IncreaseStock(5); // increase stock by 5
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Loaded {inventory.Count} products!.");
 
-            Product p3 = new Product(3) {Name = "Strawberry", Description = "Lemon ipsum", Price = new Price() {ItemPrice = 3, Currency = Currency.Euro}, UnitType = UnitTypes.PerBox}; // create another Product object
-            p3.IncreaseStock(20); // increase stock by 20
+            Console.WriteLine("Press to continue!");
+            Console.ResetColor();
+            Console.ReadLine();
 
-            inventory.Add(p1);
-            inventory.Add(p2);
-            inventory.Add(p3);
         }
 
         internal static void ShowMainMenu()
