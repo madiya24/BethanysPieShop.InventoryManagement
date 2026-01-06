@@ -1,3 +1,4 @@
+using System.Text; // for StringBuilder
 namespace BethanysPieShop.InventoryManagement.General
 {
     public class Order
@@ -18,6 +19,23 @@ namespace BethanysPieShop.InventoryManagement.General
             OrderItems = new List<OrderItem>();
         }
 
+        public string ShowOrderDertails()
+        {
+            StringBuilder orderDetails = new StringBuilder();
+
+            orderDetails.AppendLine($"Order Id: {Id}");
+            orderDetails.AppendLine($"Fulfillment Date: {OrderFulfilmentDate.ToShortTimeString()}");
+            
+            if(OrderItems != null)
+            {
+                foreach(var item in OrderItems)
+                {
+                    orderDetails.AppendLine($" {item.ProductId} .{item.ProductName}, {item.AmountOrdered} ");
+                }
+            }
+            return orderDetails.ToString();
+            
+        }
         
     }
 }

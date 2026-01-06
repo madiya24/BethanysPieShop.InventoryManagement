@@ -4,101 +4,19 @@ using System.Linq; // for LINQ methods
 using System.Threading.Tasks;
 using BethanysPieShop.InventoryManagement.General; // for async programming
 
-
+ 
 namespace BethanysPieShop.InventoryManagement.ProductManagement
 {
     public partial class Product
     {
-        public void UseProduct(int items)
+        public static int StockThreshold = 5; // static field for stock threshold
+
+        public static void ChangeStockThreshold(int newStockThreshold)
         {
-            if(items <= AmountInStock)
+            if(newStockThreshold >= 0) // only allow this to go throught the value is >0
             {
-                AmountInStock -= items;
-                UpdateLowStock();
-
-                Log($"Amount in stock updated. Now {AmountInStock} items in stock.");
+                StockThreshold = newStockThreshold;
             }
-            else
-            {
-                Log($"Not enough items in stock for {CreateSimpleProductRepresentation()}. {AmountInStock} available, {items} requested.");
-            }
-
-        }
-
-        public void IncreaseStock()
-        {
-            AmountInStock++;
-        }
-
-        public void IncreaseStock(int amount)
-        {
-            int newStock = AmountInStock + amount;
-
-            if(newStock <= maxItemsInStock)
-            {
-                AmountInStock += amount;
-            }
-            else
-            {
-                AmountInStock = maxItemsInStock; //we only store the possible maximum items
-                Log($"Created {CreateSimpleProductRepresentation()}. Stock overflow {newStock - AmountInStock} item(s) ordered that could'nt be stored..");
-            }
-
-            if(AmountInStock > 10)
-            {
-                IsBelowStockThreshold = false;
-            }
-        }
-
-
-        public void DecreaseStock(int items, string reason)
-        {
-            if(maxItemsInStock <= AmountInStock)
-            {
-                //decrease stock with the specified number of items
-                AmountInStock -= items;
-            }
-            else
-            {
-                AmountInStock = 0;
-            }
-            UpdateLowStock();
-        }
-
-        public string DisplayDetailsShort()
-        {
-            return $"{id}. {name} \n{AmountInStock} items in stock.";
-        }
-
-        public string DisplayDetailsFull()
-        {
-
-           StringBuilder sb = new();
-
-            sb.Append($"{Id}: {name} \n{description}\n{Price}\n{AmountInStock} item(s) in stock.");
-
-            if(IsBelowStockThreshold)
-           {
-             sb.Append("\n!!STOCK LOW!!");
-          }
-            return sb.ToString();
-            //return DisplayDetailsFull("");
-        }
-
-        public string DisplayDetailsFull(string extraDetails)
-        {
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append($"{Id}: {name} \n{description}\n{Price}\n{AmountInStock} item(s) in stock.");
-            sb.Append($"\n{extraDetails}");
-
-            if(IsBelowStockThreshold)
-            {
-                sb.Append("\n!!STOCK LOW!!");
-            }
-            return sb.ToString();
-            
         }
 
         public void UpdateLowStock()

@@ -9,5 +9,13 @@ namespace BethanysPieShop.InventoryManagement.General
         {
             return $"{ItemPrice} {Currency}";
         }
+
+        public Price (){}
+        
+        public Price(Double itemPrice, Currency currency)
+        {
+            ItemPrice = itemPrice;
+            Currency = currency;
+        }
     }
 }
