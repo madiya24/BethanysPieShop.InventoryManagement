@@ -1,5 +1,0 @@
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.GeneratedMSBuildEditorConfig.editorconfig
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.AssemblyInfoInputs.cache
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.AssemblyInfo.cs
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.csproj.CoreCompileInputs.cache
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.sourcelink.json
