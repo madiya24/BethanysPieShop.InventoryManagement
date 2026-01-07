@@ -1,15 +1,5 @@
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/bin/Debug/net8.0/Oop1
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/bin/Debug/net8.0/Oop1.deps.json
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/bin/Debug/net8.0/Oop1.runtimeconfig.json
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/bin/Debug/net8.0/Oop1.dll
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/bin/Debug/net8.0/Oop1.pdb
 /Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.GeneratedMSBuildEditorConfig.editorconfig
 /Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.AssemblyInfoInputs.cache
 /Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.AssemblyInfo.cs
 /Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.csproj.CoreCompileInputs.cache
 /Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.sourcelink.json
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.dll
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/refint/Oop1.dll
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.pdb
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/Oop1.genruntimeconfig.cache
-/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/obj/Debug/net8.0/ref/Oop1.dll
