@@ -17,11 +17,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Oop1.csproj" />
+    <ProjectReference Include="../BethanysPieShop.InventoryManagement/BethanysPieShop.InventoryManagement.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain/" />
+    <Folder Include="Domain/ProductManagement/" />
   </ItemGroup>
 
 </Project>

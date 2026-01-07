@@ -7,7 +7,7 @@ namespace BethanysPieShop.InventoryManagement
 {
     internal class ProductRepository
     {
-        private string directory = @"/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/BethanysPieShop/"; // create a directory path
+        private string directory = @"/Users/chrines/Desktop/Personal_Dev/BethanysPieShop.InventoryManagement/BethanysPieShop.InventoryManagement/BethanysPieShop/"; // create a directory path
         private string productsFileName = "products.txt"; // file name for products
 
         private void CheckForExistingProductFile() // checks if the product file exists, if not creates it
