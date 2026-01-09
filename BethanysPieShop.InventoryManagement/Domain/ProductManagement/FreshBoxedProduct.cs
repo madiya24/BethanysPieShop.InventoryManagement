@@ -12,5 +12,10 @@ public class FreshBoxedProduct: BoxedProduct
         
     }
 
+    public virtual void IncreaseStock()
+    {
+            AmountInStock++;
+    }
+
     
 }

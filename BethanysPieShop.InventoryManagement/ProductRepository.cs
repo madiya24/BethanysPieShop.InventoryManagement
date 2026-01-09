@@ -94,13 +94,15 @@ namespace BethanysPieShop.InventoryManagement
                             product = new  BulkProduct(productId, name, description, new Price(ItemPrice, currency),  maxItemsInStock);
                             break;
                         case "4":
-                            product = new Product(productId, name, description, new Price(ItemPrice, currency), unitType, maxItemsInStock);
+                            product = new RegularProduct(productId, name, description, new Price(ItemPrice, currency), unitType, maxItemsInStock);
                             break;
                     } 
 
                     products.Add(product);   
                 }
             }
+
+            
             catch (IndexOutOfRangeException iex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;

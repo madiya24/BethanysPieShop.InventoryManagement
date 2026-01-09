@@ -4,11 +4,12 @@ using BethanysPieShop.InventoryManagement.ProductManagement;
 
 namespace BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 
-public class BulkProduct: Product
+public class RegularProduct : Product
 {
-    public BulkProduct(int id, string name, string? description, Price price, int maxAmountInStock) : base(id, name, description, price, UnitTypes.PerKg, maxAmountInStock)
+    public RegularProduct(int id, string name, string? description, Price price, UnitTypes unitType, int maxAmountInStock) : base(id, name, description, price, unitType, maxAmountInStock)
     {
     }
+
     public override void IncreaseStock()
     {
             AmountInStock++;

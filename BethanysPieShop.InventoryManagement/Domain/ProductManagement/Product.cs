@@ -6,7 +6,7 @@ using BethanysPieShop.InventoryManagement.General; // for async programming
 
 namespace BethanysPieShop.InventoryManagement.ProductManagement
 {
-    public partial class Product: System.Object
+    public abstract partial class Product: System.Object
     {
         private int id;
         private string name = string.Empty; // initialize to empty string
@@ -95,10 +95,11 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
 
         }
 
-        public virtual void IncreaseStock()
-        {
-            AmountInStock++;
-        }
+        //public virtual void IncreaseStock()
+        //{
+           // AmountInStock++;
+       // }
+       public abstract void IncreaseStock();
 
         public virtual void IncreaseStock(int amount)
         {

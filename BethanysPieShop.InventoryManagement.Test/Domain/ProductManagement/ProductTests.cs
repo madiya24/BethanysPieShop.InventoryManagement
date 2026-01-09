@@ -2,6 +2,7 @@ using System;
 using BethanysPieShop.InventoryManagement.ProductManagement;
 using Xunit;
 using BethanysPieShop.InventoryManagement.General;
+using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 
 namespace BethanysPieShop.InventoryManagement.Test
 {
@@ -12,7 +13,7 @@ namespace BethanysPieShop.InventoryManagement.Test
         public void UseProduct_Reduces_AmountInStock()
         {
             // Arrange
-            Product product = new Product(1, "Sugar", "Lorem ispsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitTypes.PerKg, 100);
+            RegularProduct product = new RegularProduct(1, "Sugar", "Lorem ispsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitTypes.PerKg, 100);
             product.IncreaseStock(100); // increase stock by 100
 
             // Act
@@ -26,7 +27,7 @@ namespace BethanysPieShop.InventoryManagement.Test
         public void UseProduct_ItemHigherThanStock_NoChnagetoStock()
         {
             // Arrange
-            Product product = new Product(1, "Sugar", "Lorem ispsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitTypes.PerKg, 100);
+            RegularProduct product = new RegularProduct(1, "Sugar", "Lorem ispsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitTypes.PerKg, 100);
             product.IncreaseStock(10); // increase stock by 10
 
             // Act
@@ -40,7 +41,7 @@ namespace BethanysPieShop.InventoryManagement.Test
         public void UseProduct_Reduces_AmountInStock_StockBelowThreshold()
         {
             // Arrange
-            Product product = new Product(1, "Sugar", "Lorem ispsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitTypes.PerKg, 100);
+           RegularProduct product = new RegularProduct(1, "Sugar", "Lorem ispsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitTypes.PerKg, 100);
             int increaseValue = 100;
             product.IncreaseStock(increaseValue); // increase stock by 100
 

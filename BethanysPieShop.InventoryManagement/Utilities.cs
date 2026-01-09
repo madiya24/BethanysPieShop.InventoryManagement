@@ -193,7 +193,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
             switch(productType)
             {
                 case "1":
-                    newProduct = new Product(newId, name, description, new Price() { ItemPrice = Price, Currency = curruncy }, unitType, maxInStock);
+                    newProduct = new RegularProduct(newId, name, description, new Price() { ItemPrice = Price, Currency = curruncy }, unitType, maxInStock);
                     break;
                 case "2":
                     newProduct = new BulkProduct(newId, name, description, new Price() { ItemPrice = Price, Currency = curruncy }, maxInStock);
@@ -208,10 +208,9 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                     break;
             }
             if(newProduct != null)
-            {
-                inventory.Add(newProduct);
-                Console.WriteLine("New product created successfully!");
-            }
+            inventory.Add(newProduct);
+                
+            
             
         }
 
@@ -310,9 +309,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                     case "2":
                         ShowAddNewOrder();
                         break;
-                    case "0":
-                        // Return to main menu
-                        break;
+                    
                     default:
                         Console.WriteLine("Invalid selection. Press Enter to try again.");
                         Console.ReadLine();

@@ -31,5 +31,9 @@ public class FreshProduct: Product
         return sb.ToString();
     }
 
+    public override void IncreaseStock()
+    {
+            AmountInStock++;
+    }
 
 }
