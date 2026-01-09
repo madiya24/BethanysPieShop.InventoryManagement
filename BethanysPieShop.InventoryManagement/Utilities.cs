@@ -1,5 +1,6 @@
+using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 using BethanysPieShop.InventoryManagement.General; // for async programming
-//using BethanysPieShop.InventoryManagement.OrderManagement;
+//using BethanysPieShop.InventoryManagement.Domain.OrderManagement;
 using BethanysPieShop.InventoryManagement.ProductManagement;
 
 namespace BethanysPieShop.InventoryManagement.ProductManagement
@@ -9,8 +10,13 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
         private static List<Product> inventory = new();
         private static List<Order> orders = new();
 
+
         internal static void InitializeStock() // Mock implementation
         {
+            BoxedProduct bp = new BoxedProduct(6, "Eggs", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100, 6);
+            bp.IncreaseStock(100);// increase stock by 100
+            bp.UseProduct(10); // use 20 items from stock
+
             ProductRepository productRepository = new();
             inventory = productRepository.LoadProductsFromFile();
 

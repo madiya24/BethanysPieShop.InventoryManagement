@@ -121,7 +121,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
         }
 
 
-        public void DecreaseStock(int items, string reason)
+        protected void DecreaseStock(int items, string reason)
         {
             if(maxItemsInStock <= AmountInStock)
             {
