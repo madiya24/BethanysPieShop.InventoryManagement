@@ -12,8 +12,5 @@ public class FreshBoxedProduct: BoxedProduct
         
     }
 
-    public void UseFreshBoxedProduct(int items)
-    {
-        UseBoxedProduct(3);
-    }
+    
 }

@@ -1,6 +1,7 @@
+using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 using BethanysPieShop.InventoryManagement.General;
 using BethanysPieShop.InventoryManagement.ProductManagement;
-using System.IO;    
+using System;   
 //using BethanysPieShop.InventoryManagement.OrderManagement;
 
 namespace BethanysPieShop.InventoryManagement
@@ -71,9 +72,33 @@ namespace BethanysPieShop.InventoryManagement
                     {
                        unitType = UnitTypes.PerItem; // default unit type
                     }
+            
+                    string productType = productSplits[7];
 
-                    Product product = new Product(productId, name, description, new Price(){ItemPrice = ItemPrice, Currency = currency}, unitType, maxItemsInStock);
-                    products.Add(product); // add product to local list
+                    Product product = null;
+
+                    switch (productType)
+                    {
+                        case "1":
+                            success = int.TryParse(productSplits[8], out int amountPerBox);
+                            if(!success)
+                            {
+                               amountPerBox = 1; // default amount per box
+                            }
+                            product = new BoxedProduct(productId, name, description, new Price(ItemPrice, currency), maxItemsInStock, amountPerBox);
+                            break;
+                        case "2":
+                            product = new FreshProduct(productId, name, description, new Price(ItemPrice, currency), unitType, maxItemsInStock);
+                            break;
+                        case "3":
+                            product = new  BulkProduct(productId, name, description, new Price(ItemPrice, currency),  maxItemsInStock);
+                            break;
+                        case "4":
+                            product = new Product(productId, name, description, new Price(ItemPrice, currency), unitType, maxItemsInStock);
+                            break;
+                    } 
+
+                    products.Add(product);   
                 }
             }
             catch (IndexOutOfRangeException iex)

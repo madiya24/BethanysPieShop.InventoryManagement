@@ -29,7 +29,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
             
         }
 
-        public void Log(string message)
+        protected void Log(string message)
         {
             //this coild be written to a file or database instead
             Console.WriteLine(message);

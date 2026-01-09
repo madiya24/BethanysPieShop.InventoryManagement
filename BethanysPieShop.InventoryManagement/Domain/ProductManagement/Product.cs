@@ -6,12 +6,12 @@ using BethanysPieShop.InventoryManagement.General; // for async programming
 
 namespace BethanysPieShop.InventoryManagement.ProductManagement
 {
-    public partial class Product
+    public partial class Product: System.Object
     {
         private int id;
         private string name = string.Empty; // initialize to empty string
         private string? description;
-        private int maxItemsInStock = 0;
+        protected int maxItemsInStock = 0;
         
 
         public int Id 
@@ -49,9 +49,9 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
 
         public UnitTypes UnitType {get; set;}
 
-        public int AmountInStock{get;private set;} // private set means it can only be changed within this class
+        public int AmountInStock{get;protected set;} // private set means it can only be changed within this class
 
-        public bool IsBelowStockThreshold {get; private set;}//
+        public bool IsBelowStockThreshold {get; protected set;}//
 
         public Price Price {get; set;} // Price property of type Price
 
@@ -79,7 +79,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
         }
 
 
-        public void UseProduct(int items)
+        public virtual void UseProduct(int items)
         {
             if(items <= AmountInStock)
             {
@@ -95,12 +95,12 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
 
         }
 
-        public void IncreaseStock()
+        public virtual void IncreaseStock()
         {
             AmountInStock++;
         }
 
-        public void IncreaseStock(int amount)
+        public virtual void IncreaseStock(int amount)
         {
             int newStock = AmountInStock + amount;
 
@@ -121,7 +121,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
         }
 
 
-        protected void DecreaseStock(int items, string reason)
+        protected virtual void DecreaseStock(int items, string reason)
         {
             if(maxItemsInStock <= AmountInStock)
             {
@@ -135,12 +135,12 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
             UpdateLowStock();
         }
 
-        public string DisplayDetailsShort()
+        public virtual string DisplayDetailsShort()
         {
             return $"{id}. {name} \n{AmountInStock} items in stock.";
         }
 
-        public string DisplayDetailsFull()
+        public virtual string DisplayDetailsFull()
         {
 
            StringBuilder sb = new();
@@ -155,7 +155,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
             //return DisplayDetailsFull("");
         }
 
-        public string DisplayDetailsFull(string extraDetails)
+        public virtual string DisplayDetailsFull(string extraDetails)
         {
 
             StringBuilder sb = new StringBuilder();

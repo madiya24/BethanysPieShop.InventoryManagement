@@ -15,5 +15,21 @@ public class FreshProduct: Product
         
     }
 
+    public override string DisplayDetailsFull()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append($"Id: {Name}\n {Description}\n {Price}\n {AmountInStock} itenm(s) in stock");
+
+        if (IsBelowStockThreshold)
+        {
+            sb.Append("\n*!!STOCK LOW!!");
+        }
+       
+       sb.Append("Storage Instructions: " + StorageInstructions );
+       sb.Append("Expiry Date: " + ExpiryDate.ToShortDateString());
+
+        return sb.ToString();
+    }
+
 
 }
