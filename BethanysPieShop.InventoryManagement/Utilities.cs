@@ -13,11 +13,13 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
 
         internal static void InitializeStock() // Mock implementation
         {
-            BoxedProduct bp = new BoxedProduct(6, "Eggs", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100, 6);
-            bp.IncreaseStock(100);// increase stock by 100
-            bp.UseProduct(10); // use 20 items from stock
+            //BoxedProduct bp = new BoxedProduct(6, "Eggs", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, 100, 6);
+            //bp.IncreaseStock(100);// increase stock by 100
+            //bp.UseProduct(10); // use 20 items from stock
 
-            bp.ToString();
+           // bp.ToString();
+           RegularProduct rp = new RegularProduct(7,"Pie candles", "Lorem ipsum", new Price(){ItemPrice = 10, Currency = Currency.Euro} ,UnitTypes.PerItem,100);
+           double value = rp.ConverProductPrice(Currency.Dollar);
 
             ProductRepository productRepository = new();
             inventory = productRepository.LoadProductsFromFile();
