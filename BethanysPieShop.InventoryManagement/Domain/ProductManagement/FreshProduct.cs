@@ -1,11 +1,12 @@
 using System;
 using System.Text;
+using BethanysPieShop.InventoryManagement.Contracts;
 using BethanysPieShop.InventoryManagement.General;
 using BethanysPieShop.InventoryManagement.ProductManagement;
 
 namespace BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 
-public class FreshProduct: Product
+public class FreshProduct: Product, ISavable
 {
     public DateTime ExpiryDate { get; set; }
     public string StorageInstructions { get; set; }
@@ -35,5 +36,10 @@ public class FreshProduct: Product
     {
             AmountInStock++;
     }
+
+    public string ConvertToStringForSavin()
+        {
+            return $"{Id}; {Name}; {Description}; {maxItemsInStock};{Price.ItemPrice}; {(int) Price.Currency}; {(int) UnitType};2; ";
+        }
 
 }

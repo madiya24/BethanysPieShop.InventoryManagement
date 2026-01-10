@@ -1,12 +1,13 @@
 using System;
 using System.Text;
+using BethanysPieShop.InventoryManagement.Contracts;
 using BethanysPieShop.InventoryManagement.General;
 using BethanysPieShop.InventoryManagement.ProductManagement;
 
 namespace BethanysPieShop.InventoryManagement
 {
 
-    public class BoxedProduct : Product
+    public class BoxedProduct : Product, ISavable
     {
         private int amountPerBox;
         public int AmountPerBox
@@ -109,6 +110,11 @@ namespace BethanysPieShop.InventoryManagement
 
 
 
+        }
+
+        public string ConvertToStringForSavin()
+        {
+            return $"{Id}; {Name}; {Description}; {maxItemsInStock};{Price.ItemPrice}; {(int) Price.Currency}; {(int) UnitType};1; {AmountPerBox}";
         }
     }
 
