@@ -1,3 +1,4 @@
+using BethanysPieShop.InventoryManagement.Contracts;
 using BethanysPieShop.InventoryManagement.Domain.ProductManagement;
 using BethanysPieShop.InventoryManagement.General; // for async programming
 //using BethanysPieShop.InventoryManagement.Domain.OrderManagement;
@@ -62,7 +63,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                     ShowSettingsMenu();
                     break;
                 case "4":
-                    // Save all data
+                    SaveAllData();
                     break;
                 case "0":
                     // Close application
@@ -482,5 +483,24 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                 }
             }
         }
+
+        public static void SaveAllData()
+        {
+            ProductRepository productRepository = new();
+
+            List<ISavable> savables = new List<ISavable>();
+
+            foreach(var item in inventory) // now a list for product
+            {
+                if(item is ISavable)
+                {
+                    savables.Add(item as ISavable);
+
+                }
+            }
+            productRepository.SaveToFile(savables);
+            Console.ReadLine();
+            ShowMainMenu();
+        } 
     }
 }
