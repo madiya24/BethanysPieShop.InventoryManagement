@@ -94,7 +94,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
 
                 Console.WriteLine("1: View details products");
                 Console.WriteLine("2: Add new products");
-                Console.WriteLine("3: Close product");
+                Console.WriteLine("3: Clone product");
                 Console.WriteLine("4: View product with low stock");
                 Console.WriteLine("0: Return to main menu");
 
@@ -110,7 +110,7 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                         ShowCreateNewProduct();
                         break;
                     case "3":
-                        // ShowCloneExistingProduct();
+                        ShowCloneExistingProduct();
                         break;
                     case "4":
                         ShowProductsLowOnStock();
@@ -452,6 +452,35 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
                 product.UpdateLowStock(); // update low stock status for all products
             }
             Console.ReadLine();
+        }
+
+        public static void ShowCloneExistingProduct()
+        {
+            string? userSelection = string.Empty;
+            String? newId = string.Empty;
+
+            Console.WriteLine("Enter the ID the of product to clone: ");
+            string? selectedProductId = Console.ReadLine();
+
+            if(selectedProductId != null)
+            {
+                Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+
+                if(selectedProduct != null)
+                {
+                    Console.Write("Enter the new ID of the cloned product:");
+
+                    newId = Console.ReadLine();
+
+                    Product? p = selectedProduct.Clone() as Product;
+
+                    if(p != null)
+                    {
+                        p.Id = int.Parse(newId);
+                        inventory.Add(p);
+                    }
+                }
+            }
         }
     }
 }

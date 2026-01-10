@@ -7,7 +7,7 @@ using BethanysPieShop.InventoryManagement.ProductManagement;
 namespace BethanysPieShop.InventoryManagement
 {
 
-    public class BoxedProduct : Product, ISavable
+    public class BoxedProduct : Product, ISavable, ILoggable
     {
         private int amountPerBox;
         public int AmountPerBox
@@ -19,7 +19,7 @@ namespace BethanysPieShop.InventoryManagement
             }
         }
 
-        public BoxedProduct(int id, string name, string? description, Price price, int maxAmountInStock, int v) : base(id, name, description, price, UnitTypes.PerBox, maxAmountInStock)
+        public BoxedProduct(int id, string name, string? description, Price price, int maxAmountInStock, int AmountPerBox  ) : base(id, name, description, price, UnitTypes.PerBox, maxAmountInStock)
         {
         }
 
@@ -115,6 +115,16 @@ namespace BethanysPieShop.InventoryManagement
         public string ConvertToStringForSavin()
         {
             return $"{Id}; {Name}; {Description}; {maxItemsInStock};{Price.ItemPrice}; {(int) Price.Currency}; {(int) UnitType};1; {AmountPerBox}";
+        }
+
+        void ILoggable.Log(string message)
+        {
+            Log(message);
+        }
+
+        public override object Clone()
+        {
+            return new BoxedProduct(0, this.Name, this.Description, new Price(){ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency}, this.maxItemsInStock, this.AmountInStock);
         }
     }
 

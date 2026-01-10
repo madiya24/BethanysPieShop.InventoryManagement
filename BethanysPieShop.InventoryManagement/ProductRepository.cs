@@ -75,7 +75,7 @@ namespace BethanysPieShop.InventoryManagement
             
                     string productType = productSplits[7];
 
-                    Product product = null;
+                    Product? product = null;
 
                     switch (productType)
                     {

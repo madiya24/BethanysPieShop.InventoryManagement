@@ -6,7 +6,7 @@ using BethanysPieShop.InventoryManagement.General; // for async programming
 
 namespace BethanysPieShop.InventoryManagement.ProductManagement
 {
-    public abstract partial class Product: System.Object
+    public abstract partial class Product: ICloneable
     {
         private int id;
         private string name = string.Empty; // initialize to empty string
@@ -171,5 +171,8 @@ namespace BethanysPieShop.InventoryManagement.ProductManagement
             return sb.ToString();
             
         }
+
+        public abstract object Clone();
+        
     }
 }
